@@ -1,0 +1,75 @@
+/*
+Given an array of positive integers and a number ‘S,’ find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’. Return 0 if no such subarray exists.
+
+Example 1:
+
+Input: [2, 1, 5, 2, 3, 2], S=7
+Output: 2
+Explanation: The smallest subarray with a sum greater than or equal to ‘7’ is [5, 2].
+
+
+
+*/
+
+package com.check;
+
+import java.util.Scanner;
+
+public class October10_01 {
+	
+	public void calculate(int max,Integer arr[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int num;
+		int sum=0;
+		int minlen=10;
+		int count=0;
+		System.out.println("The entered array is");
+		for(int i=0;i<max;i++)
+		{
+			System.out.println(arr[i]);
+		}
+		//calculation : 
+		System.out.println("Enter the number ::");
+		num=sc.nextInt();
+		
+		for(int i=0;i<max;i++) {
+			sum=0;
+			count=0;
+			
+			for(int j=i;j<max;j++)
+			{
+				count ++;
+				sum=sum+arr[j];
+				if(sum>=num) {
+					minlen=Math.min(count, minlen);
+
+					break;
+				}
+			}
+			
+		}
+		System.out.println("The length is ::"+minlen);
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int max ;
+		System.out.println("Enter the maximum number of elements");
+		max=sc.nextInt();
+		Integer arr[] =new Integer[10];
+		
+		System.out.println("Enter the array:");
+		for(int i=0;i<max;i++)
+		{
+			arr[i]=sc.nextInt();
+			
+		}
+		October10_01 obj=new October10_01();
+		obj.calculate(max, arr);
+		
+	}
+
+}
